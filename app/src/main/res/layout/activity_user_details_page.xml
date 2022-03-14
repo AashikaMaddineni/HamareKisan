@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FAFAFA"
+    android:layout_height="700dp">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/roundCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:elevation="0dp"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/hamarekisan"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/roundCardView"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="Full Name"
+                android:textColor="#000000"
+                android:padding="13dp"
+                android:textSize="20sp"
+                tools:targetApi="m" />
+
+
+            <TextView
+                android:id="@+id/etaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etName"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="Registration Number"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:targetApi="m" />
+
+
+
+            <TextView
+                android:id="@+id/etNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etaddress"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="Mobile Number"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:targetApi="m" />
+
+
+            <TextView
+                android:id="@+id/etPasswordEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etNumber"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_mail_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="Email id"
+                android:padding="13dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:ignore="TextFields"
+                tools:targetApi="m" />
+
+
+            <TextView
+                android:id="@+id/etAboutyou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPasswordEmail"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_info_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="About you"
+                android:padding="13dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:ignore="TextFields"
+                tools:targetApi="m" />
+
+            <TextView
+                android:id="@+id/etlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etAboutyou"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:text="Location"
+                android:padding="13dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:ignore="TextFields"
+                tools:targetApi="m"
+                android:layout_marginBottom="200dp"/>
+
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomBar"
+            android:layout_below="@+id/etlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/bg"
+            app:elevation="2dp"
+            app:itemIconSize="35dp"
+            app:itemIconTint="@drawable/item_selector"
+            app:itemRippleColor="@android:color/transparent"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_items" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</ScrollView>

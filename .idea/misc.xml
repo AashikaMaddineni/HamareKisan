@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_home_screen.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_mentee_edit_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_mentee_welcome_page.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_user_details_page.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/activity_user_message_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/layout.xml" value="0.1" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/layout/splash_screen.xml" value="0.13229166666666667" />
+        <entry key="..\:/Users/Aashika/OneDrive/Desktop/Android Projects/HamareKisan/app/src/main/res/menu/menu_items.xml" value="0.13177083333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" project-jdk-name="12" project-jdk-type="JavaSDK" />
+</project>

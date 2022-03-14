@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1040095965599",
+    "firebase_url": "https://hamarekisan-f965c-default-rtdb.firebaseio.com",
+    "project_id": "hamarekisan-f965c",
+    "storage_bucket": "hamarekisan-f965c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040095965599:android:d53ca48724452db0c38daa",
+        "android_client_info": {
+          "package_name": "com.example.hamarekisan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040095965599-t49pu5f4q4begms93a1c9vnc83ficq0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hamarekisan",
+            "certificate_hash": "c1ee604ea56f30217221cde1e5cb6f81608b90cf"
+          }
+        },
+        {
+          "client_id": "1040095965599-nj2hq1667a1rctuaorleof6oohva59qc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAng1BiMVrUhC4KPSUQ0Zks820lqNa-Lbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040095965599-nj2hq1667a1rctuaorleof6oohva59qc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
