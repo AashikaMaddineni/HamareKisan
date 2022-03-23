@@ -1,4 +1,179 @@
 <resources>
     <string name="app_name">HamareKisan</string>
     <string name="sign_up"><u>Create One</u></string>
+
+
+    <string-array name="content">
+
+        <item>Bacterial Spot \n \n
+            Caused By:\n Bacteria (Xanthomonas spp. and Pseudomonas syringae pv. Tomato) \n
+            Occurs at Vegetative state, Flowering stage, Fruiting stage, Harvesting stage\n\n
+            Symptoms: \n
+            Small dark spots with a yellow halo on leaves and fruits. Stem and flower stalk also affected.\n\n
+            Organic Control:\n
+            Bacterial Spot is very expensive to treat. If disease occurs early in the season consider destroying the entire crop. Copper containing bactericides provide a protective cover on foliage and fruit for both bacteria. Bacterial viruses that specifically kill the bacteria are available for bacterial spot. Submerging seeds for one minute in 1.3% sodium hypochlorite or in hot water(50o C) for 25 minutes can reduce the incidence of disease. \n
+            \nChemical Control:\n
+            \n1.	Copper Oxychloride 50.0% WP (Moderately toxic)\n\n
+            Instructions :\n
+            Apply product 7 times with 7 days gap. Spray. Don’t apply if you are harvesting in the next 14 days or if it is windy or raining.
+            For 1 Acre , use 1 Kilogram. Dilute in 354 Litre of water.\n
+            \n2.	Mancozeb 75.0% WP (Slightly toxic)\n\n
+            Instructions :\n
+            Apply product 2 times with 15 days gap. Spray. Don’t apply if it is windy or raining. For 1 Acre , use 405 gram. Dilute in 202 Litre of water.\n
+            \n3.	Streptomycin sulfate 90.0% SP, Tetracycline hydrochloride 10.0% SP (Highly toxic)\n\n
+            Instructions :\n
+            Apply product 2 times with 11 days gap. Spray. Don’t apply if it is windy or raining. For 1 Acre , use 36 Gram. Dilute in 182 Litre of water.
+
+        </item>
+        <item>Early Blight\n\n
+            Caused By: FUNGUS (Alternaria Solani) \n\n
+            Occurs at Vegetative state, Flowering stage \n\n
+Symptoms : \n\nDark spots with concentric growth and yellow halos on leaves, leaves dry out and fall off.\n\n
+Organic Control:\n\n
+Application of products based on Bacillus subtilis or copper based fungicides registered as organic can treat tis disease.\n\n
+Chemical Control:\n\n
+1.	Cymoxanil 22.1% SC, Famoxadone 16.6% SC (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product 5 times with 10 days gap. Spray. Don’t apply if you are harvesting in the next 3 days or if it is windy or raining. For 1 Acre , use 202 Millilitre. Dilute in 202 Litre of water.
+\n\n2.	Chlorothalonil 33.1% SC, Metalaxyl-M 3.3% SC (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product 3 times with 15 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 405 Millilitre. Dilute in 202 Litre of water.
+\n\n3.	Metiram 55.0% WG, Pyraclostrobin 5.0% WG (Slightly toxic)\n\n
+Instructions :\n\n
+Apply product 3 times with 11 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 658 Gram. Dilute in 202 Litre of water.
+\n\n4.	Mancozeb 75.0% WP (Slightly toxic)\n\n
+Instructions : \n\n
+Apply product 2 times with 15 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 405 Gram. Dilute in 202 Litre of water.
+
+        </item>
+        <item>Late Blight\n\n
+         Caused By: \n\nFUNGUS (Phytophthora infestans)\n\n
+            Occurs at Fruiting stage, Harvesting stage \n\n
+            Symptoms:\n\n  Brown leaf spots - start from margin. White covering on the underside of leaves. Grey or brown wrinkled stains on fruits. Hardened fruit flesh spots and fruit decay.
+\n\nOrganic Control:\n\n
+At this point, there is no biological control of known efficacy against late blight. To avoid spreading, remove and destroy plants around the infected spot immediately and do not compost infected plant material.
+\n\nChemical Control:\n\n
+\n\n1.	Cymoxanil 22.1% SC, Famoxadone 16.6% SC (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product 5 times with 10 days gap. Spray. Don’t apply if you are harvesting in the next 3 days or if it is windy or raining. For 1 Acre , use 202 Millilitre. Dilute in 202 Litre of water.
+\n\n2.	Chlorothalonil 33.1% SC, Metalaxyl-M 3.3% SC (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product 3 times with 15 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 405 Millilitre. Dilute in 202 Litre of water.
+\n\n3.	Mandipropamid 23.4% SC (Slightly toxic)\n\n
+Instructions :\n\n
+Apply product 2 times with 8 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 162  Millilitre. Dilute in 202 Litre of water.
+\n\n4.	Mancozeb 75.0% WP (Slightly toxic)\n\n
+Instructions :\n\n
+Apply product 2 times with 15 days gap. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 405 Gram. Dilute in 202 Litre of water.
+
+        </item>
+        <item>Leaf Mold\n\n
+            Caused By:\n\n FUNGUS(Mycovellosiella fulva)\n\n
+Fruiting stage:\n\n
+Symptoms :\n\n Pale green or yellowish diffuse spots on upper leaf side. Olive green to grayish purple patches on underside. Drying and curling of leaves.
+\n\nOrganic Control:\n\n
+Seed treatment with hot water (25 minutes at 122 °F or 50 °C) is recommended to avoid the pathogen on seeds. The fungi Acremonium strictum, Dicyma pulvinata, Trichoderma harzianum or T. viride and Trichothecium roseum are antagonistic to M. fulva and could be used to reduce its spread. In greenhouse trials the growth of M. fulva on tomatoes was inhibited by A. strictum, Trichoderma viride strain 3 and T. roseum by 53, 66 and 84% respectively. In small arms, apple-cider, garlic or milk sprays and vinegar mix can be used to treat the mold.
+\n\nChemical Control:\n\n
+Always consider an integrated approach with preventive measures together with biological treatments if available. Applications should be made prior to infection when environmental conditions are optimal for the development of the disease. Recommended compounds in field use are chlorothalonil, maneb, mancozeb and copper formulations. For greenhouses, difenoconazole, mandipropamid, cymoxanil, famoxadone and cyprodinil are recommended.
+
+        </item>
+        <item>Mosaic virus\n\n
+        At Vegetative state, Flowering stage caused by : Virus(CMV)\n\n
+Symptoms: \n\n Yellow mosaic patterns on leaves and fruits. Downward bending and crinkling leaves and petioles. Stunted and deformed growth.  White streakes on flowers.
+\n\nOrganic Control:\n\n
+Application of mineral oil sprays on leaves can deter aphids from feeding on them and can thereby control the population.\n\n
+\n\nChemical Control:\n\n
+Always consider an integrated approach with preventive measures together with biological treatments if available. There are no effective chemicals against CMV, nor any that protect plants from becoming infected. Insecticides containing cypermethrin or chlorpyrifos can be used as foliar spray against aphids.
+
+\n\nAt Flowering stage, Fruiting stage caused by : virus (TMV)\n\n
+Symptoms: \n\n
+Infected leaves are distorted, with green and yellow mottling on leaves.  Plants are stunted to varying degrees and fruit set may be severely reduced.  Maturing fruits develop brown spots on their surface and internal brown blotches on their flesh.
+\n\nOrganic Control:\n\n
+Dry heating seeds at 70°C for 4 days or at 82-85°C for 24 hours will help to rid them of the virus. Alternatively, seeds can be soaked for 15 min in a solution of 100 g/l of trisodium phosphate, rinsed thoroughly with water and dried.
+\n\nChemical Control:\n\n
+Always consider an integrated approach with preventive measures together with biological treatments if available. There is no effective chemical treatment against Tomato Mosaic Virus.
+</item>
+        <item>Septoria Leaf Spot\n\n
+            \n\nCaused By: FUNGUS ( Septoria lycopersici)\n\n
+            Occurs at Vegetative state , Flowering stage, Fruiting stage
+            \n\nSymptoms:\n\n Small gray circular spots with dark-brown margins on undersides of older leaves. Black dots in their centers.  Leaves turn slightly yellow, wither, and fall off.  Stems and blossoms can also be affected.
+\n\nOrganic Control:\n\n
+Copper-based fungicides, such as Bordeaux mixture, copper hydroxide, copper sulfate, or copper oxychloride sulfate might help control the pathogen. Apply at 7 to 10 day intervals throughout the late season. Follow harvest restrictions listed on the pesticide label.
+\n\nChemical Control:\n\n
+\n\n1.	Fluxapyroxad 25.0% SC, Pyraclostrobin 25.0%SC (Moderately toxic)
+\n\nInstructions :\n\n
+Apply product 2 times with 8 days gap. Spray. Don’t apply if you are harvesting in the next 10 days or if it is windy or raining. For 1 Acre , use 91 millilitre . Dilute in 202 Litre of water.
+\n\n2.	Copper Oxychloride 50.0% WP (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product 7 times with 7 days gap. Spray. Don’t apply if you are harvesting in the next 14 days or if it is windy or raining. For 1 Acre , use 1 Kilogram. Dilute in 354 Litre of water.
+
+        </item>
+        <item>Spider mites Two-spotted spider mite\n\n
+            Caused By: Mite( Tetranychidae )\n\n
+Occurs at Vegetative state, Flowering stage, Fruiting stage \n\n
+Symptoms: \n\n
+Tiny spots on leaves. Small webs can be found between stem. Dried out leaves. Tiny, pale green, oval mites.
+\n\nOrganic Control:\n\n
+In case of minor infestation, simply wash off the mites and remove the affected leaves. Use preparations based on rapeseed, basil, soybean and neem oils to spray leaves thoroughly and reduce populations of T. urticae. Also try garlic tea, nettle slurry or insecticidal soap solutions to control the population. In fields, employ host-specific biological control with predatory mites (for example Phytoseiulus persimilis) or the biological pesticide Bacillus thuringiensis. A second spray treatment application 2 to 3 days after the initial treatment is necessary.
+\n\nChemical Control:\n\n
+1.	Spiromesifen 22.9%SC (Slightly toxic)\n\n
+Instructions :\n\n
+Apply product only once. Spray. Don’t apply if you are harvesting in the next 3 days or if it is windy or raining. For 1 Acre , use 253 millilitre . Dilute in 202 Litre of water.
+\n\n2.	Fenazaquin 10.0% BC (Moderately toxic)\n\n
+Instructions :\n\n
+Apply product only once. Spray. Don’t apply if you are harvesting in the next 5 days or if it is windy or raining. For 1 Acre , use 1 Kilogram. Dilute in 506 Litre of water.
+\n\n3.	Abamectin 1.8% EC (Highly toxic)\n\n
+Instructions :\n\n
+Apply product only once. Spray. Don’t apply if you are harvesting in the next 14 days or if it is windy or raining. For 1 Acre , use 101 millilitre . Dilute in 202 Litre of water.
+
+
+        </item>
+        <item>Target Spot\n\n
+            Caused By: FUNGUS( Corynespora cassiicola )\n\n
+            Symptoms:\n\n
+            Look for the disease on the bottom leaves. Tiny brown spots with yellow margins. Larger spots up to 10 mm that have ring patterns. Spots may be present on the stems and on the fruit.
+\n\nAt Vegetative state, Flowering stage \n\n
+            Organic Control:\n\n
+            Remove a few branches from the lower part of the plants to allow better airflow at the base. Remove and burn the lower leaves as soon as the disease is seen, especially after the lower fruit trusses have been picked. Keep plots free from weeds, as some may be hosts of the fungus. Do not use overhead irrigation; otherwise, it will create conditions for spore production and infection.
+\n\nHarvesting stage: \n\n
+Collect and burn as much of the crop as possible when the harvest is complete. Practise crop rotation, leaving 3 years before replanting tomato on the same land.
+\n\n Chemical Control:\n\n
+Warm wet conditions favour the disease such that fungicides are needed to give adequate control. The products to use are chlorothalonil, copper oxychloride or mancozeb. Treatment should start when the first spots are seen and continue at 10-14-day intervals until 3-4 weeks before last harvest. It is important to spray both sides of the leaves.
+
+        </item>
+        <item> Healthy \n\n
+            Dark Green Colored Plant, Firm Leaves, Brightly colored flowers, Well shaped ,good-colored, nutritious grains, pods or fruits.\n\n
+            TIPS:\n
+            Fertilize with the right and a balanced nutrient supply.
+            Do not over-water the crop during the season. Remove diseased leaves, fruit or branches at right time during the growing season.
+            Use biological treatments in case of pests and diseases. As long as preventive measures are followed and care is taken to give plants what they need, no chemical control should be needed!
+
+        </item>
+        <item>Yellow Leaf Curl Virus\n\n
+            Caused By: Virus ( TYLCV) \n\n
+            Occurs at Vegetative state, Flowering stage, Harvesting stage \n\n
+            Symptoms: \n\n
+            Yellow and curled leaves. Stunted growth. Less number of fruits. \n\n
+            Organic Control: \n\n
+            There is no treatment against TYLCV. Control the whitefly population to avoid the infection with the virus.\n\n
+            Chemical Control:\n\n
+            Once infected with the virus, there are no treatments against the infection. Control the whitefly population to avoid the infection with the virus. Insecticides of the family of the pyrethroids used as soil drenches or spray during the seedling stage can reduce the population of whiteflies. However, their extensive use might promote resistance development in whitefly populations..
+
+        </item>
+
+    </string-array>
+
+    <string-array name="title">
+        <item>Bacterial Spot</item>
+        <item>Early Blight</item>
+        <item>Late Blight</item>
+        <item>Leaf Mold</item>
+        <item>Mosaic virus</item>
+        <item>Septoria Leaf Spot</item>
+        <item>Spider mites Two-spotted spider mite</item>
+        <item>Target Spot</item>
+        <item>Healthy</item>
+        <item>Yellow Leaf Curl Virus</item>
+
+    </string-array>
 </resources>

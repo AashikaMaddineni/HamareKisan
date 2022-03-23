@@ -1,34 +1,45 @@
 package com.example.hamarekisan;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 
 public class UserDetailsActivity extends AppCompatActivity {
-    TextView etEmail, etNumber, etName, etaddress, etaboutyou, etlocation;
+    TextView etEmail, etNumber, etName, etaddress, etaboutyou;
     String userEmail;
-    DatabaseReference db;
     ImageView image;
     private FirebaseAuth firebaseAuth;
     BottomNavigationView bottomBar;
+    FirebaseFirestore db;
     public static final String TAG = "";
     private static int RESULT_LOAD_IMAGE = 1;
 
@@ -39,11 +50,10 @@ public class UserDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_details_page);
         etEmail = findViewById(R.id.etPasswordEmail);
         etNumber = findViewById(R.id.etNumber);
-        etName = findViewById(R.id.etName);
         etaddress = findViewById(R.id.etaddress);
+        etName = findViewById(R.id.etName);
         etaboutyou = findViewById(R.id.etAboutyou);
-        etlocation = findViewById(R.id.etlocation);
-        image=findViewById(R.id.img);
+        ImageView image1 = findViewById(R.id.img);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -53,9 +63,32 @@ public class UserDetailsActivity extends AppCompatActivity {
         } else {
             userEmail = null;
         }
-        db = FirebaseDatabase.getInstance().getReference("users");
 
+        db = FirebaseFirestore.getInstance();
+        db.collection("/users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (document.getString("Email Address").equals(userEmail)) {
+                                    etEmail.setText(document.getString("Email Address"));
+                                    etName.setText(document.getString("Full Name"));
+                                    etNumber.setText(document.getString("Mobile Number"));
+                                    etaddress.setText(document.getString("Address"));
+                                    etaboutyou.setText(document.getString("Aboutyou"));
+                                    String img_url = (String) document.get("Image");
+                                    Picasso.get().load(img_url).resize(150,150).centerCrop().into(image1);
+                                }
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
 
+                    }
+                });
 
 
 
@@ -127,5 +160,6 @@ public class UserDetailsActivity extends AppCompatActivity {
             image.setImageBitmap(bitmapImage);
         }
     }
+
 
 }

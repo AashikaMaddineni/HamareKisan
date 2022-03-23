@@ -28,7 +28,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/crs"
+                    android:src="@drawable/hamarekisan"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -67,47 +67,10 @@
 
 
             <EditText
-                android:id="@+id/etaddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etName"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_baseline_credit_card_24"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:hint="Registration Number"
-                android:inputType="text"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textColorHint="#585858"
-                android:textSize="15sp"
-                tools:targetApi="m" />
-
-
-
-            <EditText
-                android:id="@+id/etNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etaddress"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_call_black_24dp"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:hint="Mobile Number"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textColorHint="#585858"
-                android:textSize="15sp"
-                tools:targetApi="m" />
-
-
-            <EditText
                 android:id="@+id/etPasswordEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etNumber"
+                android:layout_below="@+id/etName"
                 android:background="@drawable/login_edittext_bg"
                 android:drawableStart="@drawable/ic_baseline_mail_24"
                 android:drawablePadding="7dp"
@@ -122,10 +85,45 @@
 
 
             <EditText
-                android:id="@+id/etAboutyou"
+                android:id="@+id/etNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etPasswordEmail"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColorHint="#585858"
+                android:textSize="15sp"
+                tools:targetApi="m" />
+
+            <EditText
+                android:id="@+id/etaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etNumber"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:hint="Address"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColorHint="#585858"
+                android:textSize="15sp"
+                tools:targetApi="m" />
+
+
+            <EditText
+                android:id="@+id/etAboutyou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etaddress"
                 android:background="@drawable/login_edittext_bg"
                 android:drawableStart="@drawable/ic_baseline_info_24"
                 android:drawablePadding="7dp"
@@ -138,29 +136,12 @@
                 tools:ignore="TextFields"
                 tools:targetApi="m" />
 
-            <EditText
-                android:id="@+id/etlocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etAboutyou"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_baseline_location_on_24"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:hint="Location"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColorHint="#585858"
-                android:textSize="15sp"
-                tools:ignore="TextFields"
-                tools:targetApi="m" />
-
 
             <Button
                 android:id="@+id/done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etlocation"
+                android:layout_below="@+id/etAboutyou"
                 android:background="@drawable/bg"
                 android:layout_marginBottom="120dp"
                 android:backgroundTint="#9F1005"

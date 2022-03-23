@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         bottom_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                                       user.put("Mobile Number", phnum);
                                                                       user.put("Password", pswd);
                                                                       db.collection("users")
-                                                                              .document(mAuth.getUid())
+                                                                              .document(users.getUid())
                                                                               .set(user)
                                                                               .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                   @Override

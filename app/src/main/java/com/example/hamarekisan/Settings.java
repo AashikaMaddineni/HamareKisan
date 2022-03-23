@@ -30,7 +30,7 @@ public class Settings extends AppCompatActivity {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
              public void onClick(View v) {
-                Intent i = new Intent(Settings.this, UserDetailsActivity.class);
+                Intent i = new Intent(Settings.this, UserEditProfile.class);
                 startActivity(i);
               }
                }
@@ -39,7 +39,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 firebaseAuth.getInstance().signOut();
-                Intent i = new Intent(Settings.this, MainActivity.class);
+                Intent i = new Intent(Settings.this, LoginActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

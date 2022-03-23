@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#FAFAFA"
-    android:layout_height="700dp">
+    android:layout_height="match_parent">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -12,7 +12,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout"
+            android:layout_marginBottom="200dp">
 
 
             <androidx.cardview.widget.CardView
@@ -49,53 +52,17 @@
                 android:textSize="20sp"
                 tools:targetApi="m" />
 
-
-            <TextView
-                android:id="@+id/etaddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etName"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_baseline_credit_card_24"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:text="Registration Number"
-                android:maxLines="1"
-                android:padding="13dp"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tools:targetApi="m" />
-
-
-
-            <TextView
-                android:id="@+id/etNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etaddress"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_call_black_24dp"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:text="Mobile Number"
-                android:maxLines="1"
-                android:padding="13dp"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tools:targetApi="m" />
-
-
             <TextView
                 android:id="@+id/etPasswordEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etNumber"
+                android:layout_below="@+id/etName"
                 android:background="@drawable/login_edittext_bg"
                 android:drawableStart="@drawable/ic_baseline_mail_24"
                 android:drawablePadding="7dp"
                 android:drawableTint="#585858"
-                android:text="Email id"
                 android:padding="13dp"
+                android:text="Email id"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 tools:ignore="TextFields"
@@ -103,10 +70,48 @@
 
 
             <TextView
-                android:id="@+id/etAboutyou"
+                android:id="@+id/etNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etPasswordEmail"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:text="Mobile Number"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:targetApi="m" />
+
+
+            <TextView
+                android:id="@+id/etaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etNumber"
+                android:background="@drawable/login_edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="7dp"
+                android:drawableTint="#585858"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:text="Address"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:targetApi="m" />
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/etAboutyou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etaddress"
                 android:background="@drawable/login_edittext_bg"
                 android:drawableStart="@drawable/ic_baseline_info_24"
                 android:drawablePadding="7dp"
@@ -116,38 +121,19 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 tools:ignore="TextFields"
-                tools:targetApi="m" />
-
-            <TextView
-                android:id="@+id/etlocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etAboutyou"
-                android:background="@drawable/login_edittext_bg"
-                android:drawableStart="@drawable/ic_baseline_location_on_24"
-                android:drawablePadding="7dp"
-                android:drawableTint="#585858"
-                android:text="Location"
-                android:padding="13dp"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tools:ignore="TextFields"
-                tools:targetApi="m"
-                android:layout_marginBottom="200dp"/>
-
-
+                tools:targetApi="m"/>
 
         </RelativeLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomBar"
-            android:layout_below="@+id/etlocation"
+            android:layout_below="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="75dp"
             android:layout_marginRight="75dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/bg"
             app:elevation="2dp"
             app:itemIconSize="35dp"
@@ -155,6 +141,6 @@
             app:itemRippleColor="@android:color/transparent"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/menu_items" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </ScrollView>

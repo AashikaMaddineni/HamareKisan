@@ -3,6 +3,7 @@ package com.example.hamarekisan;
 public class User {
 public String fullname, address, email, phNo;
 private String imageUrl;
+private String AboutYou;
 public User(){
 
 }
@@ -30,16 +31,28 @@ public User(String fullname, String address, String email, String phNo){
     this.phNo=phNo;
 }
 
+    public User(String fullname, String address, String email, String phNo, String AboutYou){
+        this.fullname=fullname;
+        this.address=address;
+        this.email=email;
+        this.phNo=phNo;
+        this.AboutYou=AboutYou;
+    }
+
     public String getFullname() {
         return fullname;
     }
 
-    public String getRegno() {
+    public String getAddress() {
         return address;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getAboutYou() {
+        return phNo;
     }
 
     public String getPhNo() {
@@ -50,8 +63,8 @@ public User(String fullname, String address, String email, String phNo){
         this.fullname = fullname;
     }
 
-    public void setRegno(String regno) {
-        this.address = regno;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setEmail(String email) {
@@ -62,4 +75,7 @@ public User(String fullname, String address, String email, String phNo){
         this.phNo = phNo;
     }
 
+    public void setAboutYou(String phNo) {
+        this.phNo = phNo;
+    }
 }
