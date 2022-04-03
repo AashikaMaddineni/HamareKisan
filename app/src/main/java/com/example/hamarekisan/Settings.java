@@ -1,5 +1,6 @@
 package com.example.hamarekisan;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,19 +15,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Settings extends AppCompatActivity {
-    TextView editProfile, AccountSettings, About, Feedback, ManageAccounts, Logout;
+    TextView editProfile, AccountSettings,ManageAccounts, About, PrivacyPolicy, TermsConditions, Feedback, AddAcoount, Logout;
     private FirebaseAuth firebaseAuth;
-    BottomNavigationView bottomBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         editProfile=findViewById(R.id.edit_profile);
         AccountSettings=findViewById(R.id.account_settings);
+        ManageAccounts=findViewById(R.id.manage_account);
         About=findViewById(R.id.About);
+        PrivacyPolicy=findViewById(R.id.privacypolicy);
+        TermsConditions=findViewById(R.id.terms);
         Feedback=findViewById(R.id.feedback);
         ManageAccounts=findViewById(R.id.manage_account);
+        AddAcoount=findViewById(R.id.addaccount);
         Logout=findViewById(R.id.logout);
+
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
              public void onClick(View v) {
@@ -35,6 +41,47 @@ public class Settings extends AppCompatActivity {
               }
                }
         );
+
+        About.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                 Intent i = new Intent(Settings.this, PrivacyPolicyActivity.class);
+                     startActivity(i);
+                   }
+             }
+        );
+
+        PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Settings.this, PrivacyPolicyActivity.class);
+                startActivity(i);
+            }
+        });
+
+        TermsConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Settings.this, TermsConditionsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Settings.this, FeedbackActivity.class);
+                startActivity(i);
+            }
+        });
+        ManageAccounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Settings.this, RegisterActivity.class);
+                startActivity(i);
+            }
+        });
+
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,30 +96,6 @@ public class Settings extends AppCompatActivity {
         });
 
 
-        bottomBar = findViewById(R.id.bottomBar);
-        bottomBar.setSelectedItemId(R.id.user);
-        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.message:
-                        startActivity(new Intent(getApplicationContext(), UserMessageActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomeScreen.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.user:
-                        startActivity(new Intent(getApplicationContext(), UserDetailsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-                Toast.makeText(Settings.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
     }
 
 }

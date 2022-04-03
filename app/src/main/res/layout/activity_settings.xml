@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#FAFAFA"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -13,18 +15,36 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/rubik_medium"
+            >
 
 
+            <TextView
+                android:id="@+id/Info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:padding="10dp"
+                android:text=" Personal Information"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/Info"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text=" Edit profile"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="Edit profile"
-                android:padding="13dp" />
+                android:textStyle="bold"/>
 
 
             <TextView
@@ -32,76 +52,147 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edit_profile"
-                android:textColor="#000000"
-                android:textSize="20sp"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
                 android:text="Account Settings"
-                android:padding="13dp" />
-
-
-
-            <TextView
-                android:id="@+id/About"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/account_settings"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="About"
-                android:padding="13dp"/>
-
-            <TextView
-                android:id="@+id/feedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/About"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:text="Feedback"
-                android:padding="13dp"/>
-
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/manage_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/feedback"
+                android:layout_below="@+id/account_settings"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="Manage Accounts"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:text="Manage Accounts"
-                android:padding="13dp"/>
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/manage_account"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_baseline_info_24"
+                android:padding="10dp"
+                android:text=" Support"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/About"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/support"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="About"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/privacypolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/About"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="Privacy Policy"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/privacypolicy"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="Terms &amp; Conditions"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/terms"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="Feedback"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+            <TextView
+                android:id="@+id/action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/feedback"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:padding="10dp"
+                android:text=" Actions"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/addaccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/action"
+                android:layout_marginLeft="25dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="10dp"
+                android:text="Add Account"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/manage_account"
-                android:textColor="#000000"
-                android:textSize="20sp"
+                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/signup"
+                android:padding="10dp"
                 android:text="Logout"
-                android:padding="13dp"
-                android:layout_marginBottom="350dp"/>
+                android:textColor="#000000"
+                android:fontFamily="@font/rubik_medium"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
 
 
 
         </RelativeLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomBar"
-            android:layout_below="@+id/etlogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="75dp"
-            android:layout_marginRight="75dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/bg"
-            app:elevation="2dp"
-            app:itemIconSize="35dp"
-            app:itemIconTint="@drawable/item_selector"
-            app:itemRippleColor="@android:color/transparent"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_items" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </ScrollView>

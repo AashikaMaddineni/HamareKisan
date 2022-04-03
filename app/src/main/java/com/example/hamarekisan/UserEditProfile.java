@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -70,7 +71,6 @@ public class UserEditProfile extends AppCompatActivity {
     Uri url;
     private FirebaseAuth firebaseAuth;
     FirebaseUser user;
-    BottomNavigationView bottomBar;
     public static final String TAG = "";
 
 
@@ -84,10 +84,10 @@ public class UserEditProfile extends AppCompatActivity {
         etaddress = findViewById(R.id.etaddress);
         etaboutyou = findViewById(R.id.etAboutyou);
         done = findViewById(R.id.done);
-        image1=findViewById(R.id.img);
+        image1 = findViewById(R.id.img);
         editimage = findViewById(R.id.editimage);
-        user=FirebaseAuth.getInstance().getCurrentUser();
-        String userId=user.getUid();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
         editimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +101,7 @@ public class UserEditProfile extends AppCompatActivity {
                 String name = etName.getText().toString().trim();
                 String phnum = etNumber.getText().toString().trim();
                 String Address = etaddress.getText().toString().trim();
-                String aboutyou=etaboutyou.getText().toString().trim();
+                String aboutyou = etaboutyou.getText().toString().trim();
                 if ((TextUtils.isEmpty(email)) || TextUtils.isEmpty(name) || TextUtils.isEmpty(phnum) || (TextUtils.isEmpty(Address))) {
                     Toast.makeText(getApplicationContext(), "You should enter all the fields properly", Toast.LENGTH_LONG).show();
                     return;
@@ -117,7 +117,7 @@ public class UserEditProfile extends AppCompatActivity {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             DocumentReference docRef = document.getReference();
                                             if (document.getString("Email Address").equals(userEmail)) {
-                                                if ((!TextUtils.isEmpty(email)) || (!TextUtils.isEmpty(name)) || (!TextUtils.isEmpty(phnum)) || (!TextUtils.isEmpty(Address))){
+                                                if ((!TextUtils.isEmpty(email)) || (!TextUtils.isEmpty(name)) || (!TextUtils.isEmpty(phnum)) || (!TextUtils.isEmpty(Address))) {
                                                     if (imageUri != null) {
                                                         StorageReference reference = FirebaseStorage.getInstance().getReference("/UserPhotos");
                                                         final StorageReference fileRef = reference.child(userEmail);
@@ -128,19 +128,18 @@ public class UserEditProfile extends AppCompatActivity {
                                                                     @Override
                                                                     public void onSuccess(Uri uri) {
                                                                         url = uri;
-                                                                        Toast.makeText(UserEditProfile.this, "Uploading to Storage!! " , Toast.LENGTH_SHORT).show();
+                                                                        Toast.makeText(UserEditProfile.this, "Uploading to Storage!! ", Toast.LENGTH_SHORT).show();
                                                                         Map<String, Object> user = new HashMap<>();
                                                                         user.put("Full Name", name);
                                                                         user.put("Address", Address);
                                                                         user.put("Email Address", email);
                                                                         user.put("Mobile Number", phnum);
-                                                                        if(TextUtils.isEmpty(aboutyou)) {
+                                                                        if (TextUtils.isEmpty(aboutyou)) {
                                                                             user.put("Aboutyou", "About You");
-                                                                        }
-                                                                        else {
+                                                                        } else {
                                                                             user.put("Aboutyou", aboutyou);
                                                                         }
-                                                                        if(url!=null) {
+                                                                        if (url != null) {
                                                                             user.put("Image", url.toString());
                                                                         }
                                                                         db.collection("/users")
@@ -150,17 +149,15 @@ public class UserEditProfile extends AppCompatActivity {
                                                                 });
                                                             }
                                                         });
-                                                    }
-                                                    else{
+                                                    } else {
                                                         Map<String, Object> user = new HashMap<>();
                                                         user.put("Full Name", name);
                                                         user.put("Address", Address);
                                                         user.put("Email Address", email);
                                                         user.put("Mobile Number", phnum);
-                                                        if(TextUtils.isEmpty(aboutyou)) {
+                                                        if (TextUtils.isEmpty(aboutyou)) {
                                                             user.put("Aboutyou", "About You");
-                                                        }
-                                                        else{
+                                                        } else {
                                                             user.put("Aboutyou", aboutyou);
                                                         }
 
@@ -168,8 +165,7 @@ public class UserEditProfile extends AppCompatActivity {
                                                                 .document(userId).update(user);
                                                         Toast.makeText(getApplicationContext(), "Upload success", Toast.LENGTH_LONG).show();
                                                     }
-                                                }
-                                                else {
+                                                } else {
                                                     Toast.makeText(getApplicationContext(), "Unsuccesful fields", Toast.LENGTH_LONG).show();
                                                 }
 
@@ -181,8 +177,7 @@ public class UserEditProfile extends AppCompatActivity {
 
                                 }
                             });
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Password Doesn't Match", Toast.LENGTH_LONG).show();
                 }
             }
@@ -209,7 +204,7 @@ public class UserEditProfile extends AppCompatActivity {
                                     etNumber.setText(document.getString("Mobile Number"));
                                     etaddress.setText(document.getString("Address"));
                                     etaboutyou.setText(document.getString("Aboutyou"));
-                                    if(document.get("Image") !=null) {
+                                    if (document.get("Image") != null) {
                                         String img_url = (String) document.get("Image");
                                         Picasso.get().load(img_url).resize(150, 150).centerCrop().into(image1);
                                     }
@@ -224,32 +219,23 @@ public class UserEditProfile extends AppCompatActivity {
                 });
 
 
-
-        bottomBar = findViewById(R.id.bottomBar);
-        bottomBar.setSelectedItemId(R.id.user);
-        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.message:
-                        startActivity(new Intent(getApplicationContext(), UserMessageActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomeScreen.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.user:
-                        startActivity(new Intent(getApplicationContext(), UserDetailsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-                Toast.makeText(UserEditProfile.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.settings){
+            Toast.makeText(UserEditProfile.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), Settings.class));
+        }
+        return true;
+    }
+
 
     private void selectImage () {
         final CharSequence[] options = {"Choose from Gallery", "Cancel"};

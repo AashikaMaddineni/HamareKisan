@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/hamarekisan"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/rbStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#CDDC39"
+            android:backgroundTint="#ffffff"
+            android:numStars="5"
+            android:progressBackgroundTint="#CDDC39"
+            android:progressTint="#026106" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFeedback"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="15dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
+        android:textColor="#026106"
+        android:text="Very Dissatisfied"
+        android:visibility="invisible"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/boarder"
+        android:ems="10"
+        android:gravity="start|top"
+        android:textColor="#026106"
+        android:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:hint="Enter your feedback"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:padding="5dp" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:background="@drawable/bg"
+        android:textStyle="bold"
+        android:text="Send Feedback"
+        android:textColor="#026106" />
+</LinearLayout>

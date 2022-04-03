@@ -2,6 +2,7 @@ package com.example.hamarekisan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -44,6 +45,22 @@ public class UserMessageActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.settings){
+            Toast.makeText(UserMessageActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), Settings.class));
+        }
+        return true;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

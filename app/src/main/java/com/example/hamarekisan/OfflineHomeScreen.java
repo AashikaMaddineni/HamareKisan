@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -44,10 +43,8 @@ import java.nio.ByteOrder;
 import java.util.List;
 import java.util.Locale;
 
-public class HomeScreen extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
-    BottomNavigationView bottomBar;
-    TextView confidence, textv;
+public class OfflineHomeScreen extends AppCompatActivity {
+    TextView confidence, textv, info;
     Button result;
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imageView,tomato;
@@ -70,9 +67,11 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.activity_offline_homescreen);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
+        info=findViewById(R.id.info);
         textv=findViewById(R.id.textv);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
@@ -85,12 +84,12 @@ public class HomeScreen extends AppCompatActivity {
                 R.drawable.targetspot,R.drawable.healthy,R.drawable.yellowleafcurlvirus};
         s1= getResources().getStringArray(R.array.title);
         s2= getResources().getStringArray(R.array.content);
-        if (ActivityCompat.checkSelfPermission(HomeScreen.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(HomeScreen.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(OfflineHomeScreen.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(OfflineHomeScreen.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(HomeScreen.this
+            ActivityCompat.requestPermissions(OfflineHomeScreen.this
                     , new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-            ActivityCompat.requestPermissions(HomeScreen.this
+            ActivityCompat.requestPermissions(OfflineHomeScreen.this
                     , new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
         }
 
@@ -128,51 +127,7 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
-
-        // bottom bar navigation
-
-        bottomBar = findViewById(R.id.bottomBar);
-        bottomBar.setSelectedItemId(R.id.home);
-        bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.message:
-                        startActivity(new Intent(getApplicationContext(), UserMessageActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.home:
-                        return true;
-
-                    case R.id.user:
-                        startActivity(new Intent(getApplicationContext(), UserDetailsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-
-                Toast.makeText(HomeScreen.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
-
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if(id==R.id.settings){
-            Toast.makeText(HomeScreen.this, item.getTitle(), Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(), Settings.class));
-        }
-        return true;
-    }
-
     @SuppressLint("MissingPermission")
     private void getLOaction() {
 
@@ -182,7 +137,7 @@ public class HomeScreen extends AppCompatActivity {
                 Location location = task.getResult();
                 if (location != null) {
                     try {
-                        Geocoder geocoder = new Geocoder(HomeScreen.this, Locale.getDefault());
+                        Geocoder geocoder = new Geocoder(OfflineHomeScreen.this, Locale.getDefault());
                         List<Address> address = geocoder.getFromLocation(
                                 location.getLatitude(), location.getLongitude(), 1
                         );
@@ -243,6 +198,8 @@ public class HomeScreen extends AppCompatActivity {
             confidence.setVisibility(View.VISIBLE);
             textv.setText("Confidence");
             textv.setVisibility(View.VISIBLE);
+            info.setText("For more info kindly access to internet & Login");
+            info.setVisibility(View.VISIBLE);
             model.close();
         } catch (IOException e) {
             // TODO Handle the exception
@@ -287,8 +244,7 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        firebaseAuth.getInstance().signOut();
-        Intent i = new Intent(HomeScreen.this, LoginActivity.class);
+        Intent i = new Intent(OfflineHomeScreen.this, LoginActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

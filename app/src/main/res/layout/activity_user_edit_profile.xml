@@ -12,7 +12,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout"
+            android:layout_marginBottom="200dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/roundCardView"
@@ -39,11 +42,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/roundCardView"
-                android:layout_marginBottom="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/bg"
                 android:backgroundTint="#9F1005"
                 android:fontFamily="@font/rubik_medium"
-                android:layout_centerHorizontal="true"
                 android:text="Edit"
                 android:textColor="#ffffff"
                 android:textSize="15sp"
@@ -134,6 +137,7 @@
                 android:textColorHint="#585858"
                 android:textSize="15sp"
                 tools:ignore="TextFields"
+                android:layout_marginBottom="25dp"
                 tools:targetApi="m" />
 
 
@@ -142,34 +146,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etAboutyou"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/bg"
-                android:layout_marginBottom="120dp"
                 android:backgroundTint="#9F1005"
                 android:fontFamily="@font/rubik_medium"
-                android:layout_centerHorizontal="true"
                 android:text="Done"
                 android:textColor="#ffffff"
                 android:textSize="15sp"
                 app:rippleColor="#666666" />
-
         </RelativeLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomBar"
-            android:layout_below="@+id/etlocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="75dp"
-            android:layout_marginRight="75dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/bg"
-            app:elevation="2dp"
-            app:itemIconSize="35dp"
-            app:itemIconTint="@drawable/item_selector"
-            app:itemRippleColor="@android:color/transparent"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_items" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </ScrollView>

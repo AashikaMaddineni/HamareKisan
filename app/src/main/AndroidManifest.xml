@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hamarekisan">
+
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"    />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -20,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-         <activity
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
@@ -29,17 +31,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".forgot_password" />
-        <activity android:name=".UserMessageActivity"/>
+        <activity
+            android:name=".OfflineHomeScreen"
+            android:parentActivityName=".LoginActivity" />
+        <activity android:name=".UserMessageActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".HomeScreen" />
-        <activity android:name=".Settings" />
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".HomeScreen" />
         <activity android:name=".UserEditProfile" />
-
-
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".PrivacyPolicyActivity" />
     </application>
 
 </manifest>

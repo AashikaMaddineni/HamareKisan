@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">HamareKisan</string>
     <string name="sign_up"><u>Create One</u></string>
+    <string name="offline"><u>Click Here</u></string>
 
 
     <string-array name="content">
@@ -176,4 +177,5 @@ Warm wet conditions favour the disease such that fungicides are needed to give a
         <item>Yellow Leaf Curl Virus</item>
 
     </string-array>
+    <string name="title_activity_about">AboutActivity</string>
 </resources>

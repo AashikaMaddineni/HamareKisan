@@ -30,6 +30,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
     SignInButton signInButton;
     GoogleSignInClient mGoogleSignInClient;
     Button button;
-    TextView signup, forgot_password;
+    FirebaseFirestore db;
+    TextView signup, forgot_password, offline;
     private FirebaseAuth firebaseAuth;
 
 
@@ -53,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         editText1 = findViewById(R.id.etPasswordEmail);
         editText2 = findViewById(R.id.etPassword);
         signup = findViewById(R.id.txtSignUp);
+        offline = findViewById(R.id.offine);
         signInButton = findViewById(R.id.gsignin);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -62,6 +68,15 @@ public class LoginActivity extends AppCompatActivity {
                                       @Override
                                       public void onClick(View v) {
                                           Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                                          startActivity(i);
+                                      }
+                                  }
+
+        );
+        offline.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent i = new Intent(LoginActivity.this, OfflineHomeScreen.class);
                                           startActivity(i);
                                       }
                                   }
@@ -140,6 +155,7 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signIn();
             }
         });
@@ -184,9 +200,29 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "SignInwithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), UserDetailsActivity.class));
-                            finish();
+                            db = FirebaseFirestore.getInstance();
+                            db.collection("/users") .get()
+                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                               @Override
+                                                               public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                   if (task.isSuccessful()) {
+                                                                       for (QueryDocumentSnapshot document : task.getResult()) {
+                                                                           DocumentReference docRef = document.getReference();
+                                                                           if (document.getId() == user.getUid()) {
+                                                                               Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                                                               startActivity(new Intent(getApplicationContext(), UserDetailsActivity.class));
+                                                                               finish();
+                                                                          }
+                                                                  }
+                                                              }
+                                                                   else{
+                                                                       Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                                                       startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                                                                       finish();
+                                                                   }
+                                                       }
+                                               });
+
                         } else {
                             Log.w(TAG, "SignInwithCredential:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Something Error", Toast.LENGTH_SHORT).show();
