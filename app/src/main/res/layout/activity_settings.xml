@@ -38,13 +38,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Info"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text=" Edit profile"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <TextView
@@ -53,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edit_profile"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Account Settings"
@@ -67,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/account_settings"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Manage Accounts"
@@ -82,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/manage_account"
                 android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/ic_baseline_info_24"
                 android:padding="10dp"
                 android:text=" Support"
                 android:textColor="#000000"
@@ -95,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/support"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="About"
@@ -109,7 +104,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/About"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Privacy Policy"
@@ -123,7 +117,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/privacypolicy"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Terms &amp; Conditions"
@@ -137,7 +130,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/terms"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Feedback"
@@ -152,7 +144,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/feedback"
                 android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:padding="10dp"
                 android:text=" Actions"
                 android:textColor="#000000"
@@ -165,7 +156,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/action"
                 android:layout_marginLeft="25dp"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Add Account"
@@ -177,15 +167,14 @@
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_arrow_forward_24"
+                android:layout_below="@+id/addaccount"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/signup"
+                android:fontFamily="@font/rubik_medium"
                 android:padding="10dp"
                 android:text="Logout"
                 android:textColor="#000000"
-                android:fontFamily="@font/rubik_medium"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
 

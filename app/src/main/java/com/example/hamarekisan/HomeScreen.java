@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,9 +33,18 @@ import com.example.hamarekisan.ml.Model;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -41,13 +52,15 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeScreen extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     BottomNavigationView bottomBar;
-    TextView confidence, textv;
+    TextView confidence, textv, textmore;
     Button result;
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imageView,tomato;
@@ -55,6 +68,11 @@ public class HomeScreen extends AppCompatActivity {
     private int IMAGE_MEAN = 0;
     private float IMAGE_STD = 1;
     int imageSize = 224;
+    Uri Imageuri;
+    String confidencevalue;
+    FirebaseFirestore db;
+
+
     String[] classes = {"Bacterial_spot",
             "Early_blight",
             "Late_blight",
@@ -74,17 +92,11 @@ public class HomeScreen extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         textv=findViewById(R.id.textv);
+        textmore=findViewById(R.id.textmore);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
         select = findViewById(R.id.button2);
-        String s1[],s2[];
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        int images[]={R.drawable.bacterialspot,R.drawable.earlybright,
-                R.drawable.latebright,R.drawable.leafmold,R.drawable.mosiacvirus,
-                R.drawable.septorialeafspot,R.drawable.spidermitestwospottedspidermite,
-                R.drawable.targetspot,R.drawable.healthy,R.drawable.yellowleafcurlvirus};
-        s1= getResources().getStringArray(R.array.title);
-        s2= getResources().getStringArray(R.array.content);
         if (ActivityCompat.checkSelfPermission(HomeScreen.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(HomeScreen.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -236,14 +248,16 @@ public class HomeScreen extends AppCompatActivity {
             for(int i = 0; i < classes.length; i++){
                 if(classes[maxPos]== classes[i])
                 {
-                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                    s += String.format("%s: %.1f%%\n", "Confidence", confidences[i] * 100);
                 }
             }
             confidence.setText(s);
             confidence.setVisibility(View.VISIBLE);
-            textv.setText("Confidence");
-            textv.setVisibility(View.VISIBLE);
+
+            textmore.setText("To view more details click here ");
+            textmore.setVisibility(View.VISIBLE);
             model.close();
+
         } catch (IOException e) {
             // TODO Handle the exception
         }
@@ -255,6 +269,7 @@ public class HomeScreen extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+            Imageuri=data.getData();
             if(requestCode == 1 ){
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
@@ -295,4 +310,8 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(i);
         getSharedPreferences("preferenceName",0).edit().clear().commit();
     }
+
+
+
+
 }

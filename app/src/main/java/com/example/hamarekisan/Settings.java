@@ -1,21 +1,13 @@
 package com.example.hamarekisan;
-
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Settings extends AppCompatActivity {
-    TextView editProfile, AccountSettings,ManageAccounts, About, PrivacyPolicy, TermsConditions, Feedback, AddAcoount, Logout;
+    TextView editProfile, AccountSettings,ManageAccounts, About, PrivacyPolicy, TermsConditions, Feedback, AddAccount, Logout;
     private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +22,7 @@ public class Settings extends AppCompatActivity {
         TermsConditions=findViewById(R.id.terms);
         Feedback=findViewById(R.id.feedback);
         ManageAccounts=findViewById(R.id.manage_account);
-        AddAcoount=findViewById(R.id.addaccount);
+        AddAccount=findViewById(R.id.addaccount);
         Logout=findViewById(R.id.logout);
 
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +37,7 @@ public class Settings extends AppCompatActivity {
         About.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                 Intent i = new Intent(Settings.this, PrivacyPolicyActivity.class);
+                 Intent i = new Intent(Settings.this, AboutActivity.class);
                      startActivity(i);
                    }
              }
@@ -74,7 +66,7 @@ public class Settings extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        ManageAccounts.setOnClickListener(new View.OnClickListener() {
+        AddAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Settings.this, RegisterActivity.class);
