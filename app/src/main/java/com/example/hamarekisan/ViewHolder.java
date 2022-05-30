@@ -31,20 +31,22 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
 
     }
-    public void setDetails(Context ctx, String title, String image, String prediction, String date) {
+    public void setDetails(Context ctx, String prediction, String image, String confidence, String date, String uid) {
         TextView mTitle=mview.findViewById(R.id.titleView);
         ImageView mImage=mview.findViewById(R.id.imageView);
         TextView mPrediction=mview.findViewById(R.id.predictionView);
         TextView mDate=mview.findViewById(R.id.dateView);
-        mTitle.setText(title);
-        mPrediction.setText(prediction);
-        mDate.setText(date);
-
+        mTitle.setText("Prediction : "+prediction);
+        mPrediction.setText("Confidence : "+confidence+"%");
+        mDate.setText("Date : "+date);
         Glide.with(ctx)
                 .load(image).placeholder(R.mipmap.ic_launcher).fitCenter().centerCrop()
                 .into(mImage);
     }
     private ClickListener mClickListener;
+
+
+
     public interface ClickListener{
         void onItemClick(View view,int position);
         void onItemLongClick(View view,int position);

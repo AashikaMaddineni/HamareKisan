@@ -70,12 +70,13 @@ public class HomeScreen extends AppCompatActivity {
     private int IMAGE_MEAN = 0;
     private float IMAGE_STD = 1;
     int imageSize = 224;
-    Bitmap Imageuri;
+    Bitmap Imagebitmap;
     String confidencevalue;
     FirebaseFirestore db;
     String conf = "";
     String res="";
     String percent="";
+    Uri imageuri;
 
 
     String[] classes = {"Bacterial_spot",
@@ -268,10 +269,11 @@ public class HomeScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(HomeScreen.this, Upload.class);
-                    i.putExtra("image", Imageuri);
+                    i.putExtra("image", Imagebitmap);
                     i.putExtra("result", res);
                     i.putExtra("confidence", conf);
                     i.putExtra("percent", percent);
+                    i.putExtra("uri", imageuri.toString());
                     startActivity(i);
                 }
                 });
@@ -285,14 +287,14 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        imageuri=data.getData();
         if (resultCode == RESULT_OK) {
             if(requestCode == 1 ){
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-                Imageuri=image;
+                Imagebitmap=image;
                 imageView.setImageBitmap(image);
-
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                 classifyImage(image);
             }
@@ -302,8 +304,9 @@ public class HomeScreen extends AppCompatActivity {
                     Bitmap image=MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),datapath);
                     int dimension = Math.min(image.getWidth(), image.getHeight());
                     image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-                    Imageuri=image;
+                    Imagebitmap=image;
                     imageView.setImageBitmap(image);
+                    imageuri=data.getData();
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                     classifyImage(image);
                 } catch (IOException e) {

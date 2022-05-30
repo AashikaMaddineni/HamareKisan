@@ -2,61 +2,61 @@ package com.example.hamarekisan;
 
 public class Prediction {
 
-    String title;
-    String image;
-    String prediction;
-    String date;
+    String Prediction;
+    String Image;
+    String Confidence;
+    String Date;
+    String Uid;
 
     public Prediction(){
 
     }
 
-    public Prediction(String title, String image, String prediction, String date ){
-        if (title.trim().equals("")) {
-            title = "No Name";
-        }
-        this.date=date;
-        this.title=title;
-        this.image=image;
-        this.prediction=prediction;
-
-    }
-    public Prediction(String image){
-        this.image=image;
+    public Prediction(String Prediction, String Image, String Confidence, String Date , String Uid ){
+        this.Prediction=Prediction;
+        this.Image=Image;
+        this.Confidence=Confidence;
+        this.Date=Date;
+        this.Uid=Uid;
     }
 
-    // date
-    public String getDate(){
-        return date;
-    }
-    public void setDate(String date){
-        this.date=date;
-    }
-
-    //title
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    //image
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    //prediction
     public String getPrediction() {
-        return prediction;
+        return Prediction;
     }
 
     public void setPrediction(String prediction) {
-        this.prediction = prediction;
+        Prediction = prediction;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getConfidence() {
+        return Confidence;
+    }
+
+    public void setConfidence(String confidence) {
+        Confidence = confidence;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getUid() {
+        return Uid;
+    }
+
+    public void setUid(String uid) {
+        Uid = uid;
     }
 }

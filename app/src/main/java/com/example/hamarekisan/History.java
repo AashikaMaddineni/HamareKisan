@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -41,7 +42,7 @@ public class History extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Prediction, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Prediction model) {
-                holder.setDetails(getApplicationContext(), model.getTitle(), model.getImage(), model.getPrediction(), model.getDate());
+                holder.setDetails(getApplicationContext(),  model.getPrediction(), model.getImage(), model.getConfidence(), model.getDate(), model.getUid());
             }
 
             @NonNull

@@ -67,6 +67,6 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
     implementation 'com.firebaseui:firebase-ui-database:6.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
+    implementation 'com.firebaseui:firebase-ui-firestore:6.2.1'
     implementation 'com.google.android.gms:play-services-location:19.0.1'
 }
