@@ -52,6 +52,7 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".PrivacyPolicyActivity" />
         <activity android:name=".TermsConditionsActivity" />
+          <activity android:name=".Upload"/>
     </application>
 
 </manifest>

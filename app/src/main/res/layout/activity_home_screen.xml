@@ -19,7 +19,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="80dp"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="350dp"
             android:background="@drawable/buttonstyle"
             app:srcCompat="@android:drawable/ic_menu_camera"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -30,36 +30,34 @@
             android:layout_height="80dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
 
+            android:layout_centerInParent="true"
             android:layout_marginEnd="80dp"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="350dp"
             android:background="@drawable/buttonstyle"
             app:srcCompat="@android:drawable/ic_menu_search"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/result"
-            android:layout_width="222dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginEnd="93dp"
-            android:layout_marginBottom="227dp"
+            android:layout_marginBottom="257dp"
             android:background="@drawable/bg"
             android:clickable="true"
             android:text="Result"
             android:textAllCaps="false"
             android:textColor="#146017"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="300dp"
-            android:layout_height="250dp"
+            android:layout_height="230dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -80,28 +78,51 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="140dp"
+            android:layout_marginBottom="170dp"
             android:gravity="center_horizontal"
             android:textColor="#146017"
             android:textSize="25dp"
             android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/textmore"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
+        <LinearLayout
+            android:id="@id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="120dp"
-            android:drawableEnd="@drawable/ic_baseline_open_in_new_24"
-            android:textColor="#4CAF50"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:visibility="invisible" />
+            android:layout_marginBottom="125dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
 
+            <Button
+                android:id="@+id/save"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonstyle"
+                android:text="Save and Generate Report"
+                android:textAllCaps="false"
+                android:textColor="#146017"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+
+            <Button
+                android:id="@+id/viewmore"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/buttonstyle"
+                android:text="View More Details"
+                android:textAllCaps="false"
+                android:textColor="#146017"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:visibility="invisible"/>
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

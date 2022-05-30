@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,7 +61,8 @@ import java.util.Map;
 public class HomeScreen extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     BottomNavigationView bottomBar;
-    TextView confidence, textv, textmore;
+    Button save, viewmore;
+    TextView confidence, textv;
     Button result;
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imageView,tomato;
@@ -68,9 +70,12 @@ public class HomeScreen extends AppCompatActivity {
     private int IMAGE_MEAN = 0;
     private float IMAGE_STD = 1;
     int imageSize = 224;
-    Uri Imageuri;
+    Bitmap Imageuri;
     String confidencevalue;
     FirebaseFirestore db;
+    String conf = "";
+    String res="";
+    String percent="";
 
 
     String[] classes = {"Bacterial_spot",
@@ -89,10 +94,11 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        save=findViewById(R.id.save);
+        viewmore=findViewById(R.id.viewmore);
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         textv=findViewById(R.id.textv);
-        textmore=findViewById(R.id.textmore);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
         select = findViewById(R.id.button2);
@@ -241,39 +247,50 @@ public class HomeScreen extends AppCompatActivity {
                     maxPos = i;
                 }
             }
-
+            String s="";
             result.setText(classes[maxPos]);
             result.setVisibility(View.VISIBLE);
-            String s = "";
             for(int i = 0; i < classes.length; i++){
                 if(classes[maxPos]== classes[i])
                 {
                     s += String.format("%s: %.1f%%\n", "Confidence", confidences[i] * 100);
+                    percent+= String.valueOf(confidences[i] * 100);
                 }
             }
+            conf=s;
+            res=classes[maxPos];
             confidence.setText(s);
             confidence.setVisibility(View.VISIBLE);
-
-            textmore.setText("To view more details click here ");
-            textmore.setVisibility(View.VISIBLE);
             model.close();
+            viewmore.setVisibility(View.VISIBLE);
+            save.setVisibility(View.VISIBLE);
+            viewmore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(HomeScreen.this, Upload.class);
+                    i.putExtra("image", Imageuri);
+                    i.putExtra("result", res);
+                    i.putExtra("confidence", conf);
+                    i.putExtra("percent", percent);
+                    startActivity(i);
+                }
+                });
 
         } catch (IOException e) {
             // TODO Handle the exception
         }
-
-
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Imageuri=data.getData();
             if(requestCode == 1 ){
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 int dimension = Math.min(image.getWidth(), image.getHeight());
                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                Imageuri=image;
                 imageView.setImageBitmap(image);
 
                 image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
@@ -285,8 +302,8 @@ public class HomeScreen extends AppCompatActivity {
                     Bitmap image=MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),datapath);
                     int dimension = Math.min(image.getWidth(), image.getHeight());
                     image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
+                    Imageuri=image;
                     imageView.setImageBitmap(image);
-
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                     classifyImage(image);
                 } catch (IOException e) {
@@ -297,6 +314,8 @@ public class HomeScreen extends AppCompatActivity {
 
         }
     }
+
+
 
 
     @Override
