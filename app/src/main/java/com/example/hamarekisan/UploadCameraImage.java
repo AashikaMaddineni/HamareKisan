@@ -1,13 +1,12 @@
 package com.example.hamarekisan;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import java.io.ByteArrayOutputStream;
-import java.text.*;
-import java.util.*;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,7 +15,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class Upload extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+public class UploadCameraImage extends AppCompatActivity {
     ImageView imageView;
     String confidence, result, percent;
     String userEmail;
@@ -26,7 +31,7 @@ public class Upload extends AppCompatActivity {
     private Uri imageUri;
     FirebaseUser user;
     String date;
-    byte[] bytes;
+    String imageEncoded="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,39 +43,28 @@ public class Upload extends AppCompatActivity {
         confidence=getIntent().getStringExtra("confidence");
         percent=getIntent().getStringExtra("percent");
 
+        imageEncoded=getIntent().getStringExtra("imageEncoded");
+        System.out.println("imageEncoded upload "+imageEncoded);
+
         Bitmap bitmap = (Bitmap) getIntent().getParcelableExtra("image");
         imageView.setImageBitmap(bitmap);
-        Bundle extras = getIntent().getExtras();
-        imageUri = Uri.parse(extras.getString("uri"));
-        System.out.println("ImageUri"+imageUri);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
         userEmail=user.getEmail();
         date = new SimpleDateFormat("dd-M-yyyy hh:mm:ss", Locale.getDefault()).format(new Date());
-        System.out.println(date);
-        if (imageUri != null) {
-            StorageReference reference = FirebaseStorage.getInstance().getReference("/prediction");
-            final StorageReference fileRef = reference.child(userEmail).child(date);
-            fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+            if (imageEncoded != null) {
                             Map<String, Object> prediction = new HashMap<>();
                             prediction.put("Uid", userId);
                             prediction.put("Prediction", result);
-                            prediction.put("Image", uri.toString());
+                            prediction.put("Image", imageEncoded.toString());
                             prediction.put("Confidence", percent);
                             prediction.put("Date", date);
-                            prediction.put("UploadType", "Storage");
+                            prediction.put("UploadType", "Camera");
                             String doc=userId+" "+date;
                             db.collection("prediction").document(doc).set(prediction);
                             db.collection("users").document(userId).collection("PredictionHistory").document(date).set(prediction);
-                        }
-                     });
+             }
             }
-            });
           }
-        }
-    }
+

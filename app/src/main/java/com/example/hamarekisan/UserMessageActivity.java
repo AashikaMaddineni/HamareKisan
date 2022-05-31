@@ -2,6 +2,7 @@ package com.example.hamarekisan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.Query;
 
@@ -23,6 +27,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +35,7 @@ import java.util.Locale;
 
 public class UserMessageActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
+    public static final String TAG = "";
     BottomNavigationView bottomBar;
     LinearLayoutManager mLinearLayoutManager;
     RecyclerView mRecyclerView;
@@ -39,6 +45,7 @@ public class UserMessageActivity extends AppCompatActivity {
     FirestoreRecyclerOptions<Prediction> options;
     String userId;
     String date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,36 +102,54 @@ public class UserMessageActivity extends AppCompatActivity {
 
 
     private void showData() {
-        Query query =db.collection("users").document(userId).collection("PredictionHistory");
-        options = new FirestoreRecyclerOptions.Builder<Prediction>().setQuery(query, Prediction.class).build();
-        firestoreRecyclerAdapter = new FirestoreRecyclerAdapter<Prediction, ViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Prediction model) {
-                holder.setDetails(getApplicationContext(),  model.getPrediction(), model.getImage(), model.getConfidence(), model.getDate(), model.getUid());
-            }
-
-            @NonNull
-            @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_view, parent, false);
-                ViewHolder viewHolder = new ViewHolder(itemView);
-                viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+        db = FirebaseFirestore.getInstance();
+        db.collection("users").document(userId).collection("PredictionHistory")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(UserMessageActivity.this, "hello", Toast.LENGTH_SHORT);
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Query query =db.collection("users").document(userId).collection("PredictionHistory");
+                            options = new FirestoreRecyclerOptions.Builder<Prediction>().setQuery(query, Prediction.class).build();
+                            firestoreRecyclerAdapter = new FirestoreRecyclerAdapter<Prediction, ViewHolder>(options) {
+                                @Override
+                                protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Prediction model) {
+                                    holder.setDetails(getApplicationContext(),  model.getPrediction(), model.getImage(), model.getConfidence(), model.getDate(), model.getUploadType(), model.getUid());
+                                }
+
+                                @NonNull
+                                @Override
+                                public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+                                    View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_view, parent, false);
+                                    ViewHolder viewHolder = new ViewHolder(itemView);
+                                    viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            Toast.makeText(UserMessageActivity.this, "hello", Toast.LENGTH_SHORT);
+                                        }
+
+                                        @Override
+                                        public void onItemLongClick(View view, int position) {
+                                            Toast.makeText(UserMessageActivity.this, "Long Click", Toast.LENGTH_SHORT);
+                                        }
+                                    });
+                                    return viewHolder;
+                                }
+                            };
+                            mRecyclerView.setLayoutManager(mLinearLayoutManager);
+                            firestoreRecyclerAdapter.startListening();
+                            mRecyclerView.setAdapter(firestoreRecyclerAdapter);
+                        }
+                        else {
+                            System.out.println("task failed");
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
                     }
 
-                    @Override
-                    public void onItemLongClick(View view, int position) {
-                        Toast.makeText(UserMessageActivity.this, "Long Click", Toast.LENGTH_SHORT);
-                    }
-                });
-                return viewHolder;
-            }
-        };
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        firestoreRecyclerAdapter.startListening();
-        mRecyclerView.setAdapter(firestoreRecyclerAdapter);
+
+                  }
+           );
+
     }
 
     protected void onStart() {

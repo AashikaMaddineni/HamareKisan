@@ -49,10 +49,10 @@
             android:parentActivityName=".HomeScreen" />
         <activity android:name=".UserEditProfile" />
         <activity android:name=".FeedbackActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".PrivacyPolicyActivity" />
-        <activity android:name=".TermsConditionsActivity" />
-          <activity android:name=".Upload"/>
+        <activity android:name=".WebviewActivity"/>
+
+        <activity android:name=".Upload"/>
+        <activity android:name=".UploadCameraImage"/>
     </application>
 
 </manifest>

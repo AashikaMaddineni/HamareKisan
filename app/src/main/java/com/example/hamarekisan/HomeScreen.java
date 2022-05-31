@@ -13,17 +13,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Base64;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,6 +49,7 @@ import com.google.firebase.storage.UploadTask;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -77,6 +77,10 @@ public class HomeScreen extends AppCompatActivity {
     String res="";
     String percent="";
     Uri imageuri;
+    String imageEncoded="";
+    byte[] bytes;
+    int choice=0;
+    String url="";
 
 
     String[] classes = {"Bacterial_spot",
@@ -265,16 +269,45 @@ public class HomeScreen extends AppCompatActivity {
             model.close();
             viewmore.setVisibility(View.VISIBLE);
             save.setVisibility(View.VISIBLE);
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(choice==1){
+                        Intent i = new Intent(HomeScreen.this, UploadCameraImage.class);
+                        i.putExtra("image", Imagebitmap);
+                        i.putExtra("result", res);
+                        i.putExtra("confidence", conf);
+                        i.putExtra("percent", percent);
+                        i.putExtra("imageEncoded", imageEncoded);
+                        startActivity(i);
+                    }
+                    if(choice==2) {
+                        Intent i = new Intent(HomeScreen.this, Upload.class);
+                        i.putExtra("image", Imagebitmap);
+                        i.putExtra("result", res);
+                        i.putExtra("confidence", conf);
+                        i.putExtra("percent", percent);
+                        i.putExtra("uri", imageuri.toString());
+                        startActivity(i);
+                    }
+                }
+                });
+
             viewmore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(HomeScreen.this, Upload.class);
-                    i.putExtra("image", Imagebitmap);
-                    i.putExtra("result", res);
-                    i.putExtra("confidence", conf);
-                    i.putExtra("percent", percent);
-                    i.putExtra("uri", imageuri.toString());
-                    startActivity(i);
+                    switch(res){
+                        case "Mosaic_virus":
+                            Intent i = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Bacterial_Spot.html".toString();
+                            i.putExtra("url",url);
+                            startActivity(i);
+                            break;
+                    }
+                   if(res.equals("Mosaic_virus")){
+
+                   }
+
                 }
                 });
 
@@ -287,10 +320,17 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        imageuri=data.getData();
         if (resultCode == RESULT_OK) {
+            imageuri=data.getData();
             if(requestCode == 1 ){
+                choice=1;
                 Bitmap image = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                bytes=stream.toByteArray();
+                imageEncoded = Base64.encodeToString(bytes, Base64.DEFAULT);
+                System.out.println("bytes home "+bytes);
+                System.out.println("imageencode home "+imageEncoded);
                 int dimension = Math.min(image.getWidth(), image.getHeight());
                 image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
                 Imagebitmap=image;
@@ -299,6 +339,7 @@ public class HomeScreen extends AppCompatActivity {
                 classifyImage(image);
             }
             if(requestCode == 2){
+                choice=2;
                 Uri datapath = data.getData();
                 try {
                     Bitmap image=MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),datapath);
@@ -306,7 +347,6 @@ public class HomeScreen extends AppCompatActivity {
                     image = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
                     Imagebitmap=image;
                     imageView.setImageBitmap(image);
-                    imageuri=data.getData();
                     image = Bitmap.createScaledBitmap(image, imageSize, imageSize, false);
                     classifyImage(image);
                 } catch (IOException e) {

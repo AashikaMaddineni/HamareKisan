@@ -42,7 +42,7 @@ public class History extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Prediction, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Prediction model) {
-                holder.setDetails(getApplicationContext(),  model.getPrediction(), model.getImage(), model.getConfidence(), model.getDate(), model.getUid());
+                holder.setDetails(getApplicationContext(),  model.getPrediction(), model.getImage(), model.getConfidence(), model.getDate(), model.getUploadType(), model.getUid());
             }
 
             @NonNull

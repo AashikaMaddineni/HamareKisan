@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Settings extends AppCompatActivity {
     TextView editProfile, AccountSettings,ManageAccounts, About, PrivacyPolicy, TermsConditions, Feedback, AddAccount, Logout;
     private FirebaseAuth firebaseAuth;
+    String url="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +38,10 @@ public class Settings extends AppCompatActivity {
         About.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                 Intent i = new Intent(Settings.this, AboutActivity.class);
-                     startActivity(i);
+                 Intent i = new Intent(Settings.this, WebviewActivity.class);
+                 url="https://aashikamaddineni.blogspot.com/2022/04/about-hamarekisan-app.html".toString();
+                 i.putExtra("url",url);
+                 startActivity(i);
                    }
              }
         );
@@ -46,7 +49,9 @@ public class Settings extends AppCompatActivity {
         PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Settings.this, PrivacyPolicyActivity.class);
+                Intent i = new Intent(Settings.this, WebviewActivity.class);
+                url="https://aashikamaddineni.blogspot.com/2022/04/hamarekisan-app.html".toString();
+                i.putExtra("url",url);
                 startActivity(i);
             }
         });
@@ -54,7 +59,9 @@ public class Settings extends AppCompatActivity {
         TermsConditions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Settings.this, TermsConditionsActivity.class);
+                Intent i = new Intent(Settings.this, WebviewActivity.class);
+                url="https://aashikamaddineni.blogspot.com/2022/04/hamarekisan-app_2.html".toString();
+                i.putExtra("url",url);
                 startActivity(i);
             }
         });

@@ -7,17 +7,27 @@ public class Prediction {
     String Confidence;
     String Date;
     String Uid;
+    String UploadType;
 
     public Prediction(){
 
     }
 
-    public Prediction(String Prediction, String Image, String Confidence, String Date , String Uid ){
+    public Prediction(String Prediction, String Image, String Confidence, String Date, String UploadType, String Uid ){
         this.Prediction=Prediction;
         this.Image=Image;
         this.Confidence=Confidence;
         this.Date=Date;
         this.Uid=Uid;
+        this.UploadType=UploadType;
+    }
+
+    public String getUploadType() {
+        return UploadType;
+    }
+
+    public void setUploadType(String uploadType) {
+        UploadType = uploadType;
     }
 
     public String getPrediction() {

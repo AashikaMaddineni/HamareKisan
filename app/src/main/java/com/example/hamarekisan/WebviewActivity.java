@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
-public class TermsConditionsActivity extends AppCompatActivity {
+public class WebviewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class TermsConditionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
         WebView View = findViewById(R.id.webView);
         View.setWebViewClient(new MyBrowser());
-        String url = "https://aashikamaddineni.blogspot.com/2022/04/hamarekisan-app_2.html".toString();
+        String url = getIntent().getStringExtra("url");
         View.getSettings().setLoadsImagesAutomatically(true);
         View.getSettings().setJavaScriptEnabled(true);
         View.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);

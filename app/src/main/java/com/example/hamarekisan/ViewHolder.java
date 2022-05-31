@@ -4,11 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.util.Base64;
 import com.bumptech.glide.Glide;
+import android.graphics.BitmapFactory;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,7 +32,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
 
     }
-    public void setDetails(Context ctx, String prediction, String image, String confidence, String date, String uid) {
+    public void setDetails(Context ctx, String prediction, String image, String confidence, String date, String uploadtype, String uid) {
         TextView mTitle=mview.findViewById(R.id.titleView);
         ImageView mImage=mview.findViewById(R.id.imageView);
         TextView mPrediction=mview.findViewById(R.id.predictionView);
@@ -39,9 +40,16 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mTitle.setText("Prediction : "+prediction);
         mPrediction.setText("Confidence : "+confidence+"%");
         mDate.setText("Date : "+date);
-        Glide.with(ctx)
-                .load(image).placeholder(R.mipmap.ic_launcher).fitCenter().centerCrop()
-                .into(mImage);
+        if(uploadtype.equals("Camera")){
+            byte[] bytes=Base64.decode(image ,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            mImage.setImageBitmap(bitmap);
+        }
+        else if(uploadtype.equals("Storage")) {
+            Glide.with(ctx)
+                    .load(image).placeholder(R.mipmap.ic_launcher).fitCenter().centerCrop()
+                    .into(mImage);
+        }
     }
     private ClickListener mClickListener;
 
