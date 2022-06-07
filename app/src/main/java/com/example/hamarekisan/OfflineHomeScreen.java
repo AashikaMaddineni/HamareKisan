@@ -46,12 +46,15 @@ import java.util.Locale;
 public class OfflineHomeScreen extends AppCompatActivity {
     TextView confidence, textv, info;
     Button result;
+    Button viewmore;
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imageView,tomato;
     ImageButton picture,select;
     private int IMAGE_MEAN = 0;
     private float IMAGE_STD = 1;
     int imageSize = 224;
+    String res="";
+    String url="";
     String[] classes = {"Bacterial_spot",
             "Early_blight",
             "Late_blight",
@@ -72,18 +75,12 @@ public class OfflineHomeScreen extends AppCompatActivity {
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
         info=findViewById(R.id.info);
-        textv=findViewById(R.id.textv);
+        viewmore=findViewById(R.id.viewmore);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
         select = findViewById(R.id.button2);
-        String s1[],s2[];
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        int images[]={R.drawable.bacterialspot,R.drawable.earlybright,
-                R.drawable.latebright,R.drawable.leafmold,R.drawable.mosiacvirus,
-                R.drawable.septorialeafspot,R.drawable.spidermitestwospottedspidermite,
-                R.drawable.targetspot,R.drawable.healthy,R.drawable.yellowleafcurlvirus};
-        s1= getResources().getStringArray(R.array.title);
-        s2= getResources().getStringArray(R.array.content);
         if (ActivityCompat.checkSelfPermission(OfflineHomeScreen.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(OfflineHomeScreen.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -191,15 +188,82 @@ public class OfflineHomeScreen extends AppCompatActivity {
             for(int i = 0; i < classes.length; i++){
                 if(classes[maxPos]== classes[i])
                 {
-                    s += String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100);
+                    s += String.format("%s: %.1f%%\n", "Confidence", confidences[i] * 100);
                 }
             }
+            res=classes[maxPos];
             confidence.setText(s);
             confidence.setVisibility(View.VISIBLE);
-            textv.setText("Confidence");
-            textv.setVisibility(View.VISIBLE);
-            info.setText("For more info kindly access to internet & Login");
+            info.setText("For more features kindly access to internet & Login");
             info.setVisibility(View.VISIBLE);
+            viewmore.setVisibility(View.VISIBLE);
+            viewmore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switch(res){
+                        case "Bacterial_spot":
+                            Intent a = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Bacterial Spot.html".toString();
+                            a.putExtra("url",url);
+                            startActivity(a);
+                            break;
+                        case "Early_blight":
+                            Intent b = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Early Blight.html".toString();
+                            b.putExtra("url",url);
+                            startActivity(b);
+                            break;
+                        case "Late_blight":
+                            Intent c = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Late Blight.html".toString();
+                            c.putExtra("url",url);
+                            startActivity(c);
+                            break;
+                        case "Leaf_Mold":
+                            Intent d = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Leaf Mold.html".toString();
+                            d.putExtra("url",url);
+                            startActivity(d);
+                            break;
+                        case "Mosaic_virus":
+                            Intent e = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Mosaic virus.html".toString();
+                            e.putExtra("url",url);
+                            startActivity(e);
+                            break;
+                        case "Septoria_leaf_spot":
+                            Intent f = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Septoria Leaf Spot.html".toString();
+                            f.putExtra("url",url);
+                            startActivity(f);
+                            break;
+                        case "Spider_mites Two-spotted_spider_mite":
+                            Intent g = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Spider Mites Two-spotted Spider Mite.html".toString();
+                            g.putExtra("url",url);
+                            startActivity(g);
+                            break;
+                        case "Target_Spot":
+                            Intent h = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Target Spot.html".toString();
+                            h.putExtra("url",url);
+                            startActivity(h);
+                            break;
+                        case "Yellow_Leaf_Curl_Virus":
+                            Intent i = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Yellow Leaf Curl Virus.html".toString();
+                            i.putExtra("url",url);
+                            startActivity(i);
+                            break;
+                        case "Tomato_healthy":
+                            Intent j = new Intent(OfflineHomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/healthy.html".toString();
+                            j.putExtra("url",url);
+                            startActivity(j);
+                            break;
+                    }
+                }
+            });
             model.close();
         } catch (IOException e) {
             // TODO Handle the exception

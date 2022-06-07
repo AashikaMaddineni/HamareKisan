@@ -101,7 +101,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonstyle"
-                android:text="Save and Generate Report"
+                android:text="Save Details"
                 android:textAllCaps="false"
                 android:textColor="#146017"
                 android:textSize="12dp"

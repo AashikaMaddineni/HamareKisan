@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Base64;
@@ -33,18 +32,10 @@ import com.example.hamarekisan.ml.Model;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ServerValue;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -103,7 +94,6 @@ public class HomeScreen extends AppCompatActivity {
         viewmore=findViewById(R.id.viewmore);
         result = findViewById(R.id.result);
         confidence = findViewById(R.id.confidence);
-        textv=findViewById(R.id.textv);
         imageView = findViewById(R.id.imageView);
         picture = findViewById(R.id.button);
         select = findViewById(R.id.button2);
@@ -297,17 +287,67 @@ public class HomeScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     switch(res){
+                        case "Bacterial_spot":
+                            Intent a = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Bacterial Spot.html".toString();
+                            a.putExtra("url",url);
+                            startActivity(a);
+                            break;
+                        case "Early_blight":
+                            Intent b = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Early Blight.html".toString();
+                            b.putExtra("url",url);
+                            startActivity(b);
+                            break;
+                        case "Late_blight":
+                            Intent c = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Late Blight.html".toString();
+                            c.putExtra("url",url);
+                            startActivity(c);
+                            break;
+                        case "Leaf_Mold":
+                            Intent d = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Leaf Mold.html".toString();
+                            d.putExtra("url",url);
+                            startActivity(d);
+                            break;
                         case "Mosaic_virus":
+                            Intent e = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Mosaic virus.html".toString();
+                            e.putExtra("url",url);
+                            startActivity(e);
+                            break;
+                        case "Septoria_leaf_spot":
+                            Intent f = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Septoria Leaf Spot.html".toString();
+                            f.putExtra("url",url);
+                            startActivity(f);
+                            break;
+                        case "Spider_mites Two-spotted_spider_mite":
+                            Intent g = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Spider Mites Two-spotted Spider Mite.html".toString();
+                            g.putExtra("url",url);
+                            startActivity(g);
+                            break;
+                        case "Target_Spot":
+                            Intent h = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/Target Spot.html".toString();
+                            h.putExtra("url",url);
+                            startActivity(h);
+                            break;
+                        case "Yellow_Leaf_Curl_Virus":
                             Intent i = new Intent(HomeScreen.this, WebviewActivity.class);
-                            url="file:///android_asset/Bacterial_Spot.html".toString();
+                            url="file:///android_asset/Yellow Leaf Curl Virus.html".toString();
                             i.putExtra("url",url);
                             startActivity(i);
                             break;
+                        case "Tomato_healthy":
+                            Intent j = new Intent(HomeScreen.this, WebviewActivity.class);
+                            url="file:///android_asset/healthy.html".toString();
+                            j.putExtra("url",url);
+                            startActivity(j);
+                            break;
                     }
-                   if(res.equals("Mosaic_virus")){
-
-                   }
-
                 }
                 });
 
